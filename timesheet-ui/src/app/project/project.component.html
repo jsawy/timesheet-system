@@ -1,0 +1,34 @@
+<div class="table-responsive">
+<table class="table">
+  <thead class="thead-dark">
+    <tr *ngIf="tableState.enableSort">
+      <th *ngFor="let c of tableState.tableCol" scope="col" (click)="sort(c)">
+        {{c.title}}
+        <i class="fa" [ngClass]="sortIcon(c)"></i>
+      </th>
+    </tr>
+    <tr *ngIf="!tableState.enableSort">
+      <th *ngFor="let c of tableState.tableCol" scope="col">
+        {{c.title}}
+      </th>
+    </tr>
+    <tr *ngIf="tableState.enableSearch">
+      <th *ngFor="let c of tableState.tableCol" scope="col">
+        <input *ngIf="c.searchable" type="text" [(ngModel)]="c.searchValue" class="form-control" placeholder="{{c.title}}" />
+      </th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody style="background: rgb(240, 240, 240)">
+    <tr *ngFor="let project of projects | orderBy: {property: tableState.sort.field, direction: tableState.sort.direction}">
+      <!-- <th scope="row">{{project.number}}</th> -->
+      <td *ngFor="let c of tableState.tableCol">{{project[c.field]}}</td>
+      <td>
+        <button type="button" class="btn btn-warning btn-sm" ngbTooltip="Edit Project">
+          <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</div>

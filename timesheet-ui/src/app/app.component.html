@@ -1,0 +1,52 @@
+
+<nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top">
+    <!-- Brand -->
+    <a class="navbar-brand" href="/" style="font-size: 20px;">Timesheet System</a>
+
+    <!-- Toggler/collapsibe Button -->
+    <button class="navbar-toggler" (click)="mobileToggleNav=!mobileToggleNav">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Navbar links -->
+    <div class="collapse navbar-collapse" [ngClass]="mobileToggleNav ? 'show' : ''" class="navbar-collapse collapse">
+        <ul class="navbar-nav mr-auto">
+            <!-- User  -->
+            <li routerLinkActive="active" class="nav-item">
+                <a class="nav-link" routerLink="/dashboard">Dashboard</a>
+            </li>
+            <li routerLinkActive="active" class="nav-item">
+                <a class="nav-link" routerLink="/profile">My Profile</a>
+            </li>
+
+            <li routerLinkActive="active" class="nav-item">
+                <a class="nav-link" routerLink="/heroes">Heroes</a>
+            </li>
+
+            <!-- Approver -->
+
+            <!-- Admin -->
+
+            <li routerLinkActive="active" class="nav-item">
+                <a class="nav-link" routerLink="/project">Projects</a>
+            </li>
+        </ul>
+        <form class="form-inline">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+    </div> 
+</nav>
+
+<div class="content loader-bg">
+    <div class="container-fluid">
+        <router-outlet></router-outlet>
+        <!--
+        <app-messages></app-messages>
+        -->
+    </div>
+</div>
+
+<div class="bg-dark footer text-center text-white">
+    <span>Copyright © 2019, Sawyer Inc., Scotia, NY</span>
+</div>
